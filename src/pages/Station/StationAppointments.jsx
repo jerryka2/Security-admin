@@ -1,6 +1,6 @@
 import React from 'react'
 import { useContext, useEffect } from 'react'
-import { DoctorContext } from '../../context/EventContext'
+import { DoctorContext } from '../../context/StationContext'
 import { AppContext } from '../../context/AppContext'
 import { assets } from '../../assets/assets'
 
@@ -62,3 +62,4 @@ const DoctorAppointments = () => {
 }
 
 export default DoctorAppointments
+

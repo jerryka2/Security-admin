@@ -1,7 +1,7 @@
 import React from 'react'
 import { useContext } from 'react'
 import { useEffect } from 'react'
-import { DoctorContext } from '../../context/EventContext'
+import { DoctorContext } from '../../context/StationContext'
 import { assets } from '../../assets/assets'
 import { AppContext } from '../../context/AppContext'
 
@@ -78,3 +78,4 @@ const DoctorDashboard = () => {
 }
 
 export default DoctorDashboard
+

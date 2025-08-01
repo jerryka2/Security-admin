@@ -2,7 +2,7 @@ import React, { useContext } from 'react'
 import { NavLink } from 'react-router-dom'
 import { assets } from '../assets/assets'
 import { AdminContext } from '../context/AdminContext'
-import { DoctorContext } from '../context/EventContext'
+import { DoctorContext } from '../context/StationContext'
 
 const Sidebar = () => {
   const { dToken } = useContext(DoctorContext)
@@ -117,3 +117,4 @@ const Sidebar = () => {
 }
 
 export default Sidebar
+

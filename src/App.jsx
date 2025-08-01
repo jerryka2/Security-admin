@@ -7,15 +7,15 @@ import Navbar from './components/Navbar';
 import Sidebar from './components/Sidebar';
 import { AdminContext } from './context/AdminContext';
 import { AppContext } from './context/AppContext';
-import { DoctorContext } from './context/EventContext';
-import AddDoctor from './pages/Admin/AddEvents';
+import { DoctorContext } from './context/StationContext';
+import AddDoctor from './pages/Admin/AddStation';
 import AllAppointments from './pages/Admin/AllBooking';
 import AuditLog from './pages/Admin/AuditLog';
 import Dashboard from './pages/Admin/Dashboard';
-import DoctorsList from './pages/Admin/EventsList';
-import DoctorAppointments from './pages/Doctor/EventAppointments';
-import DoctorDashboard from './pages/Doctor/EventDashboard';
-import DoctorProfile from './pages/Doctor/EventProfile';
+import DoctorsList from './pages/Admin/StationsList';
+import DoctorAppointments from './pages/Station/StationAppointments';
+import DoctorDashboard from './pages/Station/StationDashboard';
+import DoctorProfile from './pages/Station/StationProfile';
 import Login from './pages/Login';
 
 const App = () => {
@@ -64,3 +64,4 @@ const App = () => {
 }
 
 export default App
+

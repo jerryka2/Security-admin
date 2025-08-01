@@ -1,9 +1,9 @@
 import { useContext, useState } from 'react';
 import { toast } from 'react-toastify';
 import { AdminContext } from '../context/AdminContext';
-import { DoctorContext } from '../context/EventContext';
+import { DoctorContext } from '../context/StationContext';
 import apiClient from '../services/apiClient';
-
+ 
 const Login = () => {
   const [state, setState] = useState('Admin'); // Toggle between Admin and Event Organizer
   const [email, setEmail] = useState('');
@@ -109,3 +109,4 @@ const Login = () => {
 };
 
 export default Login;
+

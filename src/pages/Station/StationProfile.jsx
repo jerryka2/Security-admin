@@ -1,7 +1,7 @@
 import { useContext, useEffect, useState } from 'react'
 import { toast } from 'react-toastify'
 import { AppContext } from '../../context/AppContext'
-import { DoctorContext } from '../../context/EventContext'
+import { DoctorContext } from '../../context/StationContext'
 import apiClient from '../../services/apiClient'
 
 const DoctorProfile = () => {
@@ -106,3 +106,4 @@ const DoctorProfile = () => {
 }
 
 export default DoctorProfile
+

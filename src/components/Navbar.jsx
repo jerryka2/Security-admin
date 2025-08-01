@@ -1,7 +1,7 @@
 import { useContext } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { AdminContext } from '../context/AdminContext'
-import { DoctorContext } from '../context/EventContext'
+import { DoctorContext } from '../context/StationContext'
 
 const Navbar = () => {
   const { dToken, setDToken } = useContext(DoctorContext)
@@ -41,3 +41,4 @@ const Navbar = () => {
 }
 
 export default Navbar
+

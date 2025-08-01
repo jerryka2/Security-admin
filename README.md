@@ -1,9 +1,9 @@
 <<<<<<< HEAD
 # Security-admin
 =======
-# CarePoint Admin Panel
+# EnergiPort Admin Panel
 
-This is the admin panel for the CarePoint doctor appointment application built with React + Vite.
+This is the admin panel for the EnergiPort EV charging station application built with React + Vite.
 
 This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 
