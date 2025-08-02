@@ -18,21 +18,21 @@ const Navbar = () => {
   }
 
   return (
-    <div className="flex justify-between items-center px-6 sm:px-12 lg:px-20 py-4 bg-white border-b border-orange-100/50 shadow-sm sticky top-0 z-50 animate-fade-in-down">
+    <div className="flex justify-between items-center px-4 sm:px-8 lg:px-16 py-3 bg-white border-b border-green-100/30 shadow-sm sticky top-0 z-50">
       <div className="flex items-center gap-3">
         <h1
           onClick={() => navigate('/')}
-          className="text-2xl sm:text-3xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-orange-500 to-pink-500 cursor-pointer hover:scale-105 transition-transform duration-300"
+          className="text-xl sm:text-2xl font-semibold text-green-800 cursor-pointer hover:text-green-900 transition-colors duration-200"
         >
-          EventVibe
+          EnergiPort
         </h1>
-        <p className="border border-orange-200/60 px-3 py-1 rounded-full text-xs sm:text-sm font-medium text-orange-600 bg-orange-50/50 hover:bg-orange-100 transition-all duration-300">
-          {aToken ? 'Admin' : 'Event Organizer'}
+        <p className="border border-green-200/50 px-2 py-0.5 rounded-full text-xs sm:text-sm font-medium text-green-600 bg-green-50 hover:bg-green-100 transition-colors duration-200">
+          {aToken ? 'Admin' : 'Station Operator'}
         </p>
       </div>
       <button
         onClick={() => logout()}
-        className="bg-gradient-to-r from-orange-500 to-pink-500 hover:from-orange-600 hover:to-pink-600 text-white text-sm sm:text-base font-semibold px-8 sm:px-10 py-2.5 rounded-full shadow-md hover:shadow-lg hover:-translate-y-0.5 transition-all duration-300"
+        className="bg-green-600 text-white text-sm sm:text-base font-medium px-6 sm:px-8 py-2 rounded-full hover:bg-green-700 hover:shadow-md transition-all duration-200"
       >
         Logout
       </button>
@@ -41,4 +41,3 @@ const Navbar = () => {
 }
 
 export default Navbar
-
