@@ -4,8 +4,8 @@ import { AdminContext } from '../../context/AdminContext'
 import { AppContext } from '../../context/AppContext'
 
 const Dashboard = () => {
-  const { aToken, getDashData, cancelAppointment, dashData } = useContext(AdminContext)
-  const { slotDateFormat } = useContext(AppContext)
+  const { aToken, getDashData, cancelAppointment, dashData = {} } = useContext(AdminContext)
+  const { slotDateFormat = (date) => date } = useContext(AppContext)
 
   useEffect(() => {
     if (aToken) {
@@ -14,123 +14,114 @@ const Dashboard = () => {
   }, [aToken])
 
   return dashData && (
-    <div className="min-h-screen bg-gradient-to-b from-orange-50/30 to-white flex items-center justify-center w-full">
+    <div className="min-h-screen bg-gray-50 flex items-center justify-center w-full">
       {/* Centered Container */}
-      <div className="w-full max-w-6xl p-6 sm:p-8 lg:p-12 ml-14 md:ml-64">
+      <div className="w-full max-w-5xl p-6 sm:p-8 ml-14 md:ml-64">
         {/* Header */}
         <div className="mb-8 text-center">
-          <h1 className="text-3xl sm:text-4xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-orange-500 to-pink-500 animate-fade-in-down">
-            Admin Dashboard
+          <h1 className="text-2xl sm:text-3xl font-bold text-green-900">
+            EnergiPort Dashboard
           </h1>
-          <p className="text-gray-600 text-lg mt-2">Welcome back! Here's what's happening with your event platform today.</p>
+          <p className="text-gray-600 text-base mt-2">Overview of your charging network’s performance today.</p>
         </div>
 
         {/* Stats Cards */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
-          {/* Organizers Card */}
-          <div className="group bg-white p-6 rounded-3xl shadow-2xl border border-orange-100/50 cursor-pointer transform hover:scale-105 hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
-            <div className="flex items-center justify-between">
-              <div>
-                <p className="text-4xl font-bold text-orange-600 group-hover:text-orange-700 transition-colors duration-300">{dashData.doctors}</p>
-                <p className="text-gray-600 font-medium mt-2 text-lg">Total Organizers</p>
-                <div className="w-16 h-1 bg-orange-500 rounded-full mt-3 group-hover:w-20 transition-all duration-300"></div>
-              </div>
-              <div className="bg-orange-100/50 p-4 rounded-full group-hover:bg-orange-200 transition-colors duration-300">
-                <span className="text-2xl group-hover:scale-110 transition-transform duration-300">🎤</span>
-              </div>
+        <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 mb-8">
+          {/* Stations Card */}
+          <div className="bg-white p-6 rounded-xl border border-green-100/50 shadow-sm hover:border-green-200 transition-colors duration-150 flex items-center justify-between">
+            <div>
+              <p className="text-2xl font-semibold text-green-700">{dashData.doctors ?? 0}</p>
+              <p className="text-gray-600 text-sm mt-1">Total Stations</p>
+            </div>
+            <div className="bg-green-100/50 p-3 rounded-lg">
+              <img className="w-8 h-8" src={assets.station_icon || assets.appointments_icon} alt="Stations" />
             </div>
           </div>
 
           {/* Bookings Card */}
-          <div className="group bg-white p-6 rounded-3xl shadow-2xl border border-orange-100/50 cursor-pointer transform hover:scale-105 hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
-            <div className="flex items-center justify-between">
-              <div>
-                <p className="text-4xl font-bold text-pink-600 group-hover:text-pink-700 transition-colors duration-300">{dashData.appointments}</p>
-                <p className="text-gray-600 font-medium mt-2 text-lg">Total Bookings</p>
-                <div className="w-16 h-1 bg-pink-500 rounded-full mt-3 group-hover:w-20 transition-all duration-300"></div>
-              </div>
-              <div className="bg-pink-100/50 p-4 rounded-full group-hover:bg-pink-200 transition-colors duration-300">
-                <span className="text-2xl group-hover:scale-110 transition-transform duration-300">🎟️</span>
-              </div>
+          <div className="bg-white p-6 rounded-xl border border-green-100/50 shadow-sm hover:border-green-200 transition-colors duration-150 flex items-center justify-between">
+            <div>
+              <p className="text-2xl font-semibold text-green-700">{dashData.appointments ?? 0}</p>
+              <p className="text-gray-600 text-sm mt-1">Total Bookings</p>
+            </div>
+            <div className="bg-green-100/50 p-3 rounded-lg">
+              <img className="w-8 h-8" src={assets.appointments_icon} alt="Bookings" />
             </div>
           </div>
 
-          {/* Attendees Card */}
-          <div className="group bg-white p-6 rounded-3xl shadow-2xl border border-orange-100/50 cursor-pointer transform hover:scale-105 hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
-            <div className="flex items-center justify-between">
-              <div>
-                <p className="text-4xl font-bold text-purple-600 group-hover:text-purple-700 transition-colors duration-300">{dashData.patients}</p>
-                <p className="text-gray-600 font-medium mt-2 text-lg">Total Attendees</p>
-                <div className="w-16 h-1 bg-purple-500 rounded-full mt-3 group-hover:w-20 transition-all duration-300"></div>
-              </div>
-              <div className="bg-purple-100/50 p-4 rounded-full group-hover:bg-purple-200 transition-colors duration-300">
-                <span className="text-2xl group-hover:scale-110 transition-transform duration-300">👥</span>
-              </div>
+          {/* Users Card */}
+          <div className="bg-white p-6 rounded-xl border border-green-100/50 shadow-sm hover:border-green-200 transition-colors duration-150 flex items-center justify-between">
+            <div>
+              <p className="text-2xl font-semibold text-green-700">{dashData.patients ?? 0}</p>
+              <p className="text-gray-600 text-sm mt-1">Total Users</p>
+            </div>
+            <div className="bg-green-100/50 p-3 rounded-lg">
+              <img className="w-8 h-8" src={assets.default_user_icon || assets.appointments_icon} alt="Users" />
             </div>
           </div>
         </div>
 
         {/* Latest Bookings */}
-        <div className="bg-white rounded-3xl shadow-2xl border border-orange-100/50 overflow-hidden animate-slide-in-up">
+        <div className="bg-white rounded-xl border border-green-100/50 shadow-sm overflow-hidden">
           {/* Header */}
-          <div className="bg-gradient-to-r from-orange-500 to-pink-500 px-6 sm:px-8 py-5">
+          <div className="bg-green-700 px-4 sm:px-6 py-3">
             <div className="flex items-center gap-3">
-              <div className="bg-white bg-opacity-20 p-3 rounded-lg">
-                <span className="text-xl">📋</span>
-              </div>
-              <h3 className="text-white font-semibold text-xl sm:text-2xl">Latest Bookings</h3>
+              <img className="w-6 h-6 opacity-80" src={assets.appointments_icon} alt="Bookings" />
+              <h3 className="text-white font-semibold text-lg">Recent Charging Bookings</h3>
             </div>
           </div>
 
           {/* Bookings List */}
-          <div className="divide-y divide-orange-100">
-            {dashData.latestAppointments.slice(0, 5).map((item, index) => (
+          <div className="divide-y divide-green-100/50">
+            {(dashData.latestAppointments || []).slice(0, 5).map((item, index) => (
               <div
-                className="flex items-center px-6 sm:px-8 py-5 hover:bg-orange-50/50 transition-colors duration-300 group"
-                key={index}
-                style={{
-                  animation: `fadeInUp 0.5s ease-out ${index * 0.1}s both`
-                }}
+                className={`flex items-center px-4 sm:px-6 py-4 ${index % 2 === 0 ? 'bg-white' : 'bg-green-50/30'} hover:bg-green-100/50 transition-colors duration-150`}
+                key={item._id || index}
               >
-                {/* Organizer Image */}
-                <div className="relative flex-shrink-0">
+                {/* Station Image */}
+                <div className="flex-shrink-0">
                   <img
-                    className="w-12 h-12 rounded-full object-cover border-2 border-orange-200 group-hover:border-orange-400 transition-colors duration-300"
-                    src={item.docData.image}
-                    alt="Organizer"
+                    className="w-10 h-10 rounded-full object-cover border border-green-200/50"
+                    src={item.docData?.image || assets.default_station_icon}
+                    alt="Station"
+                    onError={(e) => (e.target.src = assets.default_station_icon)}
                   />
-                  <div className="absolute -bottom-1 -right-1 w-4 h-4 bg-green-500 border-2 border-white rounded-full"></div>
                 </div>
 
                 {/* Booking Info */}
-                <div className="flex-1 ml-5">
-                  <p className="text-gray-800 font-medium group-hover:text-orange-600 transition-colors duration-300 text-lg">
-                    {item.docData.name}
+                <div className="flex-1 ml-4">
+                  <p className="text-base font-medium text-gray-900">
+                    {item.docData?.name || 'Unknown Station'}
                   </p>
-                  <p className="text-gray-500 mt-1 text-sm">
-                    Booking on {slotDateFormat(item.slotDate)}
+                  <p className="text-sm text-gray-600">
+                    Booked on {item.slotDate ? slotDateFormat(item.slotDate) : 'N/A'}
                   </p>
                 </div>
 
                 {/* Status/Action */}
-                <div className="ml-5 flex-shrink-0">
+                <div className="ml-4 flex-shrink-0">
                   {item.cancelled ? (
-                    <span className="inline-flex items-center px-4 py-2 rounded-full text-sm font-medium bg-red-100 text-red-700">
-                      <span className="w-2 h-2 bg-red-500 rounded-full mr-2"></span>
+                    <span className="inline-flex items-center px-3 py-1 rounded-lg text-sm font-medium bg-red-50 text-red-600">
+                      <span className="w-2 h-2 bg-red-500 rounded-full mr-1.5"></span>
                       Cancelled
                     </span>
                   ) : item.isCompleted ? (
-                    <span className="inline-flex items-center px-4 py-2 rounded-full text-sm font-medium bg-green-100 text-green-700">
-                      <span className="w-2 h-2 bg-green-500 rounded-full mr-2"></span>
+                    <span className="inline-flex items-center px-3 py-1 rounded-lg text-sm font-medium bg-green-50 text-green-600">
+                      <span className="w-2 h-2 bg-green-500 rounded-full mr-1.5"></span>
                       Completed
                     </span>
                   ) : (
                     <button
                       onClick={() => cancelAppointment(item._id)}
-                      className="p-2 rounded-full hover:bg-red-100 transition-colors duration-300 group/btn"
+                      className="p-2 rounded-full hover:bg-red-50 transition-colors duration-150"
                       title="Cancel Booking"
+                      disabled={!item._id}
                     >
-                      <span className="text-xl group-hover/btn:scale-110 transition-transform duration-300">❌</span>
+                      <img
+                        className="w-5 h-5"
+                        src={assets.cancel_icon}
+                        alt="Cancel"
+                      />
                     </button>
                   )}
                 </div>
@@ -138,50 +129,16 @@ const Dashboard = () => {
             ))}
 
             {/* Empty State */}
-            {dashData.latestAppointments.length === 0 && (
-              <div className="text-center py-16">
-                <div className="w-20 h-20 bg-orange-50/50 rounded-full flex items-center justify-center mx-auto mb-6">
-                  <span className="text-3xl opacity-50">🎟️</span>
+            {(!dashData.latestAppointments || dashData.latestAppointments.length === 0) && (
+              <div className="text-center py-12">
+                <div className="w-12 h-12 bg-green-50 rounded-lg flex items-center justify-center mx-auto mb-4">
+                  <img className="w-6 h-6 opacity-60" src={assets.appointments_icon} alt="No bookings" />
                 </div>
-                <p className="text-gray-500 text-lg">No recent bookings</p>
+                <p className="text-gray-600 text-sm">No recent bookings</p>
               </div>
             )}
           </div>
         </div>
-
-        {/* Add custom CSS for animations */}
-        <style>{`
-          @keyframes fadeInUp {
-            from {
-              opacity: 0;
-              transform: translateY(20px);
-            }
-            to {
-              opacity: 1;
-              transform: translateY(0);
-            }
-          }
-          @keyframes fade-in-down {
-            from {
-              opacity: 0;
-              transform: translateY(-10px);
-            }
-            to {
-              opacity: 1;
-              transform: translateY(0);
-            }
-          }
-          @keyframes slide-in-up {
-            from {
-              opacity: 0;
-              transform: translateY(20px);
-            }
-            to {
-              opacity: 1;
-              transform: translateY(0);
-            }
-          }
-        `}</style>
       </div>
     </div>
   )
